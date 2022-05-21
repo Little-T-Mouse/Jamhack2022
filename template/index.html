@@ -27,11 +27,6 @@
             top: 0;
             cursor: pointer;
         }
-        .background {
-            background: white;
-            background-blend-mode: darken;
-            background-size: cover;
-        }
         .nav-list {
             width: 70%;
             display: flex;
@@ -48,21 +43,34 @@
         .nav-list li a:hover {
             color: black;
         }
+        #home{
+            height: 150vh;
+        }
+        #stat{
+            height: 150vh;
+        }
     </style>
     <body>
-        <nav class="navbar background">
-            <ul class="nav-list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#stat">Statistics</a></li>
-            </ul>
-        </nav>
-        <home>
-            <p style="text-align:center"><font size="10">Covid-19 Cases</font></p>
-            <p style="text-align:center"><font size="10"><b>521,920,560</b></font></p>
-            <p style="text-align:center"><font size="10">Covid-19 Death</font></p>
-            <p style="text-align:center"><font size="10"><b>6,274,323</b></font></p>
-            <p style="text-align:center"><font size="1">Last Update: <span id='datetime'></span></font>
-        </home>
+        <header>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#stat">Statistics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="home">
+                <p style="text-align:center"><font size="10">Covid-19 Cases</font></p>
+                <p style="text-align:center"><font size="10"><b>521,920,560</b></font></p>
+                <p style="text-align:center"><font size="10">Covid-19 Death</font></p>
+                <p style="text-align:center"><font size="10"><b>6,274,323</b></font></p>
+                <p style="text-align:center"><font size="1">Last Update: <span id='datetime'></span></font>
+            </section>
+            <section id="stat">
+                <h1 style="text-align:center"><font size="20"><b>Statistics</b></font></h1>
+            </section>
+        </main>
     </body>
     <script>
         var date = new Date();
