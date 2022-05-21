@@ -61,7 +61,11 @@
             <p style="text-align:center"><font size="10"><b>521,920,560</b></font></p>
             <p style="text-align:center"><font size="10">Covid-19 Death</font></p>
             <p style="text-align:center"><font size="10"><b>6,274,323</b></font></p>
-            <p style="text-align:center"><font size="1">Last Update: 2022/05/20 10:41 PM</font>
+            <p style="text-align:center"><font size="1">Last Update: <span id='datetime'></span></font>
         </home>
     </body>
+    <script>
+        var date = new Date();
+        document.getElementById("datetime").innerHTML = date.toLocaleString();
+    </script>
 </html>
