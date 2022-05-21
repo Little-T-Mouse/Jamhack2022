@@ -88,6 +88,9 @@
         #stat{
             height: 150vh;
         }
+        #info{
+            height: 150vh;
+        }
         .text-center {
             text-align: center;
         }
@@ -97,6 +100,26 @@
             background-attachment: fixed;
             background-size: cover;
         }
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
     </style>
     <body>
         <header>
@@ -104,6 +127,7 @@
                 <ul class="nav-list">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#stat">Statistics</a></li>
+                    <li><a href="#info">Information</a></li>
                 </ul>
             </nav>
         </header>
@@ -136,6 +160,13 @@
                     </div>
                 </div>
             </section>
+            <section id="info">
+                <h1 style="text-align:center"><font size="20"><b>Information</b></font></h1>
+                <button type="button" class="collapsible">Where did covid first appear?</button>
+                <div class="content">
+                    <p>The virus was initially discovered in Wuhan, China, in December 2019.</p>
+                </div>
+            </section>
         </main>
     </body>
     <script>
@@ -154,5 +185,14 @@
             let res1 = txt.substring(s1+9, e1);
             document.getElementById("numdeath").innerHTML = res1;
         });
+        var txt = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < txt.length; i++) {
+            txt[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") content.style.display = "none";
+                else content.style.display = "block";
+            });
+        }
     </script>
 </html>
