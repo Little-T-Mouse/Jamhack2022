@@ -13,9 +13,8 @@
 </head>
 
 <body>
-    <h2> Data is given on google (only recorded who is fully vaccinated) </h2>
+    <h2>States in The US Vaccination Rate</h2>
     <canvas id="barDataChart" style="width: 100%; max-width: 1200px"></canvas>
-
     <a href="./details">
         <button type="button"> Detailed Data! </button>
     </a>
@@ -26,20 +25,16 @@
         let scheme = ['#AA0329', '#265A20', '#A8AA11', '#6E8B0D', '#ECE259', '#F0CB6F', '#D8E36B', '#17A4E6', '#4EC753', '#A0893B', '#5F560A', '#44BADA', '#83F32C', '#63A80D', '#1D9093', '#67E230', '#F11550', '#4CF113', '#08CA53', '#17D583', '#0EC071', '#E0D24A', '#A67A73', '#98A6EE', '#EC2726', '#6C2214', '#61EDA7', '#F193C2', '#E244DF', '#50194C', '#A882E5', '#81D38C', '#197120', '#64EE40', '#FF24CC', '#0A4E7A', '#935E6A', '#E52FB4', '#552C97', '#46A4BA', '#DD2E93', '#805CA1', '#A30FCD', '#1D2D97', '#A96EF1', '#5C3DCC', '#C9F9F1', '#3D00E5', '#1E25E0', '#50DA83'];
 
         new Chart("barDataChart", {
-           type: "bar",
+            type: "bar",
             data: {
-               labels: states,
+                labels: states,
                 datasets: [{
                     backgroundColor: scheme,
                     data: ratios
                 }]
             },
-
             options: {
-               title: {
-                   display: true,
-                   text: "states in the US vaccination rate"
-               }
+                legend: {display: false}
             }
         });
     </script>
