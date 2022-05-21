@@ -101,9 +101,9 @@
         <main>
             <section id="home">
                 <p style="text-align:center"><font size="10">Covid-19 Cases</font></p>
-                <p style="text-align:center"><font size="10"><b>521,920,560</b></font></p>
+                <p style="text-align:center"><font size="10"><b><span id="numcase"></span></b></font></p>
                 <p style="text-align:center"><font size="10">Covid-19 Death</font></p>
-                <p style="text-align:center"><font size="10"><b>6,274,323</b></font></p>
+                <p style="text-align:center"><font size="10"><b><span id="numdeath"></span></b></font></p>
                 <p style="text-align:center"><font size="1">Last Update: <span id='datetime'></span></font>
             </section>
             <section id="stat">
@@ -130,5 +130,18 @@
     <script>
         var date = new Date();
         document.getElementById("datetime").innerHTML = date.toLocaleString();
+        fetch('https://disease.sh/v3/covid-19/all')
+        .then(res => res.text())
+        .then((textResponse) => {
+            let txt = textResponse;
+            let s = txt.indexOf("\"cases\":")
+            let e = txt.indexOf(",\"todayCases\"")
+            let res = txt.substring(s+8, e);
+            document.getElementById("numcase").innerHTML = res;
+            let s1 = txt.indexOf("\"deaths\":")
+            let e1 = txt.indexOf(",\"todayDeaths\"")
+            let res1 = txt.substring(s1+9, e1);
+            document.getElementById("numdeath").innerHTML = res1;
+        });
     </script>
 </html>
