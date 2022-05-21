@@ -79,6 +79,9 @@
         #stat{
             height: 150vh;
         }
+        .text-center {
+            text-align: center;
+        }
     </style>
     <body>
         <header>
@@ -99,9 +102,22 @@
             </section>
             <section id="stat">
                 <h1 style="text-align:center"><font size="20"><b>Statistics</b></font></h1>
-                <p style="margin-left:200px"><font size="7">Worldwide</font></p>
-                <button class="button buttong">Covid-19 Cases By Contries</button>
-                <button class="button buttonb">Covid-19 Death By Contries</button>
+                <div class="container" style="display: flex; height: 100px;">
+                    <div style="width: 50%;">
+                        <p style="margin-left:200px"><font size="7">Worldwide</font></p>
+                        <div class="text-center">
+                            <button class="button buttong">Covid-19 Cases</button>
+                            <button class="button buttonb">Covid-19 Death</button>
+                        </div>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <p style="margin-left:200px"><font size="7">Canada</font></p>
+                        <div class="text-center">
+                            <button class="button buttong">Covid-19 Cases</button>
+                            <button class="button buttonb">Covid-19 Death</button>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     </body>
