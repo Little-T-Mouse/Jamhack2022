@@ -120,6 +120,19 @@
             overflow: hidden;
             background-color: #f1f1f1;
         }
+        #back {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            border: none;
+            outline: none;
+            background-color: gray;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
     </style>
     <body>
         <header>
@@ -133,6 +146,7 @@
             </nav>
         </header>
         <main>
+            <button onclick="back_top()" id="back" title="Go to top of the page">Back to top</button>
             <section id="home">
                 <p style="text-align:center"><font size="10">Covid-19 Cases</font></p>
                 <p style="text-align:center"><font size="10"><b><span id="numcase"></span></b></font></p>
@@ -251,6 +265,18 @@
                 if (content.style.display === "block") content.style.display = "none";
                 else content.style.display = "block";
             });
+        }
+        topbtn = document.getElementById("back");
+        window.onscroll = function() {
+            scorllfunc();
+        }
+        function scorllfunc() {
+            if(document.documentElement.scrollTop > 25 || document.body.scrollTop > 25) topbtn.style.display = "block";
+            else topbtn.style.display = "none";
+        }
+        function back_top() {
+            document.body.scorllTop = 0;
+            document.documentElement.scrollTop = 0;
         }
     </script>
 </html>
