@@ -1,5 +1,5 @@
 # Covid-19 Statistics
-Submission to Jamhacks' Jamhacks 6, 2022 by Tommy Shan, Yunzhe Qiao and Anthony Sheu.
+Submission to Jamhacks' Jamhacks 6, 2022 by Haoen Shan, Yunzhe Qiao and Anthony Sheu.
 ## Inspiration
 Nowadays, Covid-19 is happening all over the world. We were to make a convenient website access to the status of its exposure, with some knowledge about Covid-19.
 ## What it does
