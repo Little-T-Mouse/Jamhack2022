@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            padding-top: 170px;
+            background-color: aquamarine;
+        }
+        .flex { display:flex; }
+        .field {
+            min-width: 200px;
+            min-height: 30px;
+            margin: 10px;
+            margin-left: 100pt;
+        }
+        .ques {
+            margin: 10px;
+            margin-left: -100pt;
+        }
+        .result { 
+            display: flex;
+            visibility: hidden;
+            margin-left: 100pt;
+        }
+        button {
+            height: 40px;
+            width: 500px;
+            margin-left: -100pt;
+            background: white;
+            border: black solid 2px;
+        }
+        button:active {
+            background: gray;
+        }
+    </style>
+    <body>
+        <div class="flex">
+            <div class="field" id="q">Question:</div>
+            <div id="question" class="ques"></div>
+        </div>
+        <div class="flex">
+            <div class="field" id="a">A</div>
+            <button id="A" onclick="A_clicked()"></button>
+        </div>
+        <div class="flex">
+            <div class="field" id="b">B</div>
+            <button id="B" onclick="B_clicked()"></button>
+        </div>
+        <div class="flex">
+            <div class="field" id="c">C</div>
+            <button id="C" onclick="C_clicked()"></button>
+        </div>
+        <div class="flex">
+            <div class="field" id="d">D</div>
+            <button id="D" onclick="D_clicked()"></button>
+        </div>
+        <div class="result">
+            <p style="margin-right:250pt">Congrates, you finished this quiz!</p>
+            <a href="../#"><button>Back</button></a>
+        </div>
+    </body>
+    <script>
+        var problem = [
+            new question("N/A", "N/A", "N/A", "N/A", "N/A"),
+            new question("Which of these is not a common symptom of COVID-19?", "Hungry.", "Fever.", "Runny nose.", "Cough."),
+            new question("What does COVID-19 stand for?", "Coronavirus disease 2019.", "Coronavirus sickness 2019.", "Coronavirus disaster 2019.", "It’s just random letters that don’t stand for anything."),
+            new question("What is herd immunity?", "When a large group of people develop a resistance to an illness.", "When people in the same group all act the same way.", "When no one gets voted off the island.", "When everyone has already become sick with an illness."),
+            new question("What is contact tracing?", "It’s a process used to track all the people a COVID-19 patient has been in contact with.", "It’s a way to find your lost contact lens.", "It’s a platform to keep in touch with your friends during the pandemic.", "It’s when you copy a drawing by putting paper on top and tracing it."),
+            new question("For how long do experts recommend you wash your hands?", "20 seconds.", "2 minutes and 20 seconds.", "10 seconds.", "It doesn’t matter."),
+        ];
+        var vis = new Array(problem.length, false);
+        var cur_question;
+        var choice;
+        var cnt = 0;
+        function question(statement, correct, wrong1, wrong2, wrong3){
+            this.statement = statement;
+            this.correct = correct;
+            this.wrong1 = wrong1;
+            this.wrong2 = wrong2;
+            this.wrong3 = wrong3;
+        }
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            get_problem();
+        });
+        function get_problem() {
+            var rand = Math.floor(Math.random() * problem.length);
+            while(vis[rand]) rand = Math.floor(Math.random() * problem.length);
+            vis[rand] = true;
+            cur_question = problem[rand];
+            choice = [problem[rand].correct, problem[rand].wrong1, problem[rand].wrong2, problem[rand].wrong3];
+            var st = Math.floor(Math.random() * 4);
+            document.getElementById("question").innerHTML = cur_question.statement;
+            document.getElementById("A").value = choice[st];
+            document.getElementById("A").innerHTML = choice[st];
+            document.getElementById("B").value = choice[(st+1)%4];
+            document.getElementById("B").innerHTML = choice[(st+1)%4];
+            document.getElementById("C").value = choice[(st+2)%4];
+            document.getElementById("C").innerHTML = choice[(st+2)%4];
+            document.getElementById("D").value = choice[(st+3)%4];
+            document.getElementById("D").innerHTML = choice[(st+3)%4];
+        }
+        function A_clicked() {
+            var A = document.getElementById("A").value;
+            check(A);
+        }
+        function B_clicked() {
+		    var B = document.getElementById("B").value;
+            check(B);
+        }
+        function C_clicked() {
+            var C = document.getElementById("C").value;
+  	        check(C);
+        }
+        function D_clicked() {
+            var D = document.getElementById("D").value;
+  	        check(D);
+        }
+        function check(ans) {
+            if(ans == cur_question.correct) {
+                cnt++;
+                get_problem();
+            }
+            else alert("Try again!");
+            if(cnt == 4) {
+                document.getElementById("question").style.display = "none";
+                document.getElementById("q").style.display = "none";
+                document.getElementById("A").style.display = "none";
+                document.getElementById("B").style.display = "none";
+                document.getElementById("C").style.display = "none";
+                document.getElementById("D").style.display = "none";
+                document.getElementById("a").style.display = "none";
+                document.getElementById("b").style.display = "none";
+                document.getElementById("c").style.display = "none";
+                document.getElementById("d").style.display = "none";
+                elem2 = document.querySelector('.result');
+                elem2.style.visibility = 'visible';
+            }
+        }
+    </script>
+</html>
